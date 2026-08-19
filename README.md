@@ -2,7 +2,7 @@
 
 A MATLAB simulation script based on the **MNPBEM (Boundary Element Method) Toolbox** to model and evaluate the optical scattering cross-section of gold nanocone structures on a layered substrate ($50\text{ nm}$ ITO on dielectric substrate).
 
-## Overview <img width="400" height="400" alt="cone shape" src="https://github.com/user-attachments/assets/77e158c4-96d1-4ac2-957c-19e591edc9fc" />
+## Overview <img width="400" height="350" alt="cone shape" src="https://github.com/user-attachments/assets/77e158c4-96d1-4ac2-957c-19e591edc9fc" />
 
 
 This script configures anumerical simulation by combining MNPBEM core modules with specialized geometry functions:
