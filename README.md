@@ -1,24 +1,25 @@
-# MNPBEM Nanocone Scattering Simulation
+# MNPBEM Nanocone Scattering Simulation 
 
-A MATLAB simulation script based on the **MNPBEM (Boundary Element Method) Toolbox** to compute the electromagnetic scattering cross-section of gold nanocones on a layered substrate ($50\text{ nm}$ ITO on dielectric substrate).
+A MATLAB simulation script based on the **MNPBEM (Boundary Element Method) Toolbox** to model and evaluate the optical scattering cross-section of gold nanocone structures on a layered substrate ($50\text{ nm}$ ITO on dielectric substrate).
 
-## Physics & Simulation Setup
+## Overview & Pipeline Setup
 
-* **Nanostructure Geometry:** Parametric 3D gold nanocone generated via `gen_cone` and converted into a boundary-element compartment.
-* **Layered Substrate:** Multi-layer system consisting of air, a $50\text{ nm}$ Indium Tin Oxide (ITO) thin film (`ito3.dat`), gold material data (`gold.dat`), and a dielectric substrate ($\epsilon = 2.25$).
-* **Electromagnetic Solver:** 
-  * Retarded BEM solver utilizing precomputed Green's function tables (`compgreentablayer`) to handle reflection at dielectric interfaces efficiently.
-  * Plane-wave excitation from above ($\theta = 89^\circ$, TM polarization) across a wavelength spectrum of $500\text{ nm} - 800\text{ nm}$.
+This project configures a complete numerical simulation workflow by combining MNPBEM core modules with specialized geometry functions:
 
-## Features
-
-* **Substrate Interfacing:** Automatically positions the 3D nanocone mesh directly above the ITO interface.
-* **Green's Function Caching:** Reuses existing tabulated Green's functions (`greentab`) to accelerate iterative execution.
-* **Interactive Feedback:** Real-time progress monitoring using `multiWaitbar`.
-* **Data Export:** Outputs computed scattering cross-sections (`sca`) and wavelength vectors (`enei`) to formatted CSV files.
+* **Substrate & Layer Configuration:** Defined a multi-layer system consisting of Air / ITO ($50\text{ nm}$, `ito3.dat`) / Substrate ($\epsilon = 2.25$).
+* **Geometry Integration & Positioning:** Integrated a 3D nanocone mesh (`gen_cone`) into the MNPBEM compartment system and automated its spatial alignment directly above the ITO interface.
+* **Excitation & Spectrum Parameterization:** Configured oblique TM-polarized plane-wave excitation ($\theta = 89^\circ$) across a $500\text{ nm} - 800\text{ nm}$ wavelength range.
+* **Solver Execution & Caching:** Set up the retarded BEM solver using tabulated Green's functions (`compgreentablayer`) to efficiently handle substrate reflections.
+* **Data Extraction:** Automated the export of computed scattering cross-sections (`sca`) and wavelength vectors (`enei`) to data files.
 
 ## Prerequisites
 
 * **MATLAB** (R2020b or newer recommended)
-* **MNPBEM Toolbox** (Must be added to MATLAB search path)
+* **MNPBEM Toolbox** (Must be added to MATLAB search path, including `gen_cone` helper functions)
 
+## Usage
+
+1. Ensure the MNPBEM toolbox and required material/geometry dependencies are in your MATLAB path.
+2. Run the pipeline script:
+   ```matlab
+   run('nanocone_scattering.m');
